@@ -1,0 +1,25 @@
+pnputil.exe /add-driver "C:\Windows\System32\DriverStore\FileRepository\hpcu270u.inf_amd64_3e20dbae029ad04a\*.inf" /install
+
+$DriverParams = @{
+    "Name"    = "HP Universal Printing PCL 6"
+    "InfPath" = "C:\Windows\System32\DriverStore\FileRepository\hpcu270u.inf_amd64_3e20dbae029ad04a\hpcu270u.inf"
+}
+
+Add-PrinterDriver @DriverParams
+
+$PortParams = @{
+    "Name"               = "10.10.10.10"
+    "PrinterHostAddress" = "10.10.10.10"
+}
+
+Add-PrinterPort @PortParams
+
+$PrintParams = @{
+    "DriverName" = "HP Universal Printing PCL 6"
+    "Name"       = "HP Universal Printing PCL 6"
+    "PortName"   = "10.10.10.10"
+}
+
+Add-Printer @PrintParams
+
+
